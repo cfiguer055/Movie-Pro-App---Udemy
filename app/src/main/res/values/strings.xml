@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MovieProApp</string>
+    <string name="api_key">2d4f52206f47b0fa3c936736b9f8721a</string>
 </resources>
