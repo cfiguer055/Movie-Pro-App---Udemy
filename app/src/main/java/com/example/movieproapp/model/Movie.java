@@ -17,9 +17,12 @@ import com.google.gson.annotations.SerializedName;
 @Generated("jsonschema2pojo")
 public class Movie extends BaseObservable implements Parcelable {
 
+    // Use Glide Library Later to display the image
     @SerializedName("poster_path")
     @Expose
     private String posterPath;
+
+
     @SerializedName("adult")
     @Expose
     private Boolean adult;
@@ -59,6 +62,21 @@ public class Movie extends BaseObservable implements Parcelable {
     @SerializedName("vote_average")
     @Expose
     private Double voteAverage;
+
+
+    // Parcel
+    public final static Parcelable.Creator<Movie> CREATOR = new Creator<Movie>() {
+        @Override
+        public Movie createFromParcel(Parcel parcel) {
+            return new Movie(parcel);
+        }
+
+        @Override
+        public Movie[] newArray(int i) {
+            return (new Movie[i]);
+        }
+    };
+
 
     @Bindable
     public String getPosterPath() {
