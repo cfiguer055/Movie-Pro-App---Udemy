@@ -2,15 +2,19 @@ package com.example.movieproapp.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.widget.ImageView;
 
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
+import androidx.databinding.BindingAdapter;
 import androidx.databinding.library.baseAdapters.BR;
 
 import java.net.Inet4Address;
 import java.util.List;
 import javax.annotation.Generated;
 
+import com.bumptech.glide.Glide;
+import com.example.movieproapp.BR;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -76,6 +80,21 @@ public class Movie extends BaseObservable implements Parcelable {
             return (new Movie[i]);
         }
     };
+
+
+    @BindingAdapter({"posterPath"})
+    public static void loadImage(ImageView image, String imageURL) {
+
+        // Basic Image URL
+        // https://image.tmdb.org/t/p/original/[poster_path]
+        // w500 loads it faster
+        String imagePath = "https://image.tmdb.org/t/p/w500" + imageURL;
+
+        Glide.with(image.getContext())
+                .load(imagePath)
+                .into(image);
+
+    }
 
 
     @Bindable
