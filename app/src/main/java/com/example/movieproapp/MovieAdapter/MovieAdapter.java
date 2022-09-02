@@ -42,7 +42,6 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 
     @Override
     public void onBindViewHolder(@NonNull MovieViewHolder holder, int position) {
-
         Movie movie = movieArrayList.get(position);
         holder.movieListItemBinding.setMovie(movie);
 
@@ -52,6 +51,8 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
     public int getItemCount() {
         return movieArrayList.size();
     }
+
+
 
 
     // View Holder Class

@@ -254,7 +254,7 @@ public class Movie extends BaseObservable implements Parcelable {
         parcel.writeValue(posterPath);
         parcel.writeValue(originalLanguage);
         parcel.writeValue(originalTitle);
-        parcel.writeValue(genreIds);
+        //parcel.writeValue(genreIds);
         parcel.writeValue(backdropPath);
         parcel.writeValue(adult);
         parcel.writeValue(overview);
@@ -267,20 +267,21 @@ public class Movie extends BaseObservable implements Parcelable {
     }
 
     public Movie(Parcel in) {
-        this.posterPath = (String) in.readValue((String.class.getClassLoader()));
+        // THE ORDER OF THESE MATTERS!!!! HAHAHAHAHA!!!!!! OKAY ;)
+        this.voteCount = ((Integer) in.readValue((Integer.class.getClassLoader())));
+        this.id = ((Integer) in.readValue((Integer.class.getClassLoader())));
+        this.video = ((Boolean) in.readValue((Boolean.class.getClassLoader())));
+        this.voteAverage = ((Double) in.readValue((Double.class.getClassLoader())));
+        this.title = ((String) in.readValue((String.class.getClassLoader())));
+        this.popularity = ((Double) in.readValue((Double.class.getClassLoader())));
+        this.posterPath = ((String) in.readValue((String.class.getClassLoader())));
+        this.originalLanguage = ((String) in.readValue((String.class.getClassLoader())));
+        this.originalTitle = ((String) in.readValue((String.class.getClassLoader())));
+//        in.readList(this.genreIds, (java.lang.Integer.class.getClassLoader()));
+        this.backdropPath = ((String) in.readValue((String.class.getClassLoader())));
         this.adult = ((Boolean) in.readValue((Boolean.class.getClassLoader())));
         this.overview = ((String) in.readValue((String.class.getClassLoader())));
         this.releaseDate = ((String) in.readValue((String.class.getClassLoader())));
-        in.readList(this.genreIds, (java.lang.Integer.class.getClassLoader()));
-        this.id = ((Integer) in.readValue((Integer.class.getClassLoader())));
-        this.originalTitle = ((String) in.readValue((String.class.getClassLoader())));
-        this.originalLanguage = ((String) in.readValue((String.class.getClassLoader())));
-        this.title = ((String) in.readValue((String.class.getClassLoader())));
-        this.backdropPath = ((String) in.readValue((String.class.getClassLoader())));
-        this.popularity = ((Double) in.readValue((Double.class.getClassLoader())));
-        this.voteCount = ((Integer) in.readValue((Integer.class.getClassLoader())));
-        this.video = ((Boolean) in.readValue((Boolean.class.getClassLoader())));
-        this.voteAverage = ((Double) in.readValue((Double.class.getClassLoader())));
     }
 }
 
